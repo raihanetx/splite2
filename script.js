@@ -21,7 +21,7 @@ const domElements = {
     latestEbooksGrid: document.getElementById('latestEbooksGrid'),
     allProductsGrid: document.getElementById('allProductsGrid'),
     noProductsMessage: document.getElementById('noProductsMessage'),
-    productDetailContainer: document.getElementById('productDetailContainer'),
+    productDetailPage: document.getElementById('productDetailPage'),
     cartPageContent: document.getElementById('cartPageContent'),
     emptyCartPage: document.getElementById('emptyCartPage'),
     checkoutForm: document.getElementById('checkoutForm'),
@@ -168,8 +168,8 @@ function initializeProductDetailPage(urlParams) {
             displayProductDetail(product.id);
         } else {
             console.error(`Product not found for slug: ${slug}`);
-            if(domElements.productDetailContainer) {
-                domElements.productDetailContainer.innerHTML = '<p>Product not found. <a href="products.html">Go back to products</a>.</p>';
+            if(domElements.productDetailPage) {
+                domElements.productDetailPage.innerHTML = '<p>Product not found. <a href="products.html">Go back to products</a>.</p>';
             }
         }
     }
@@ -797,7 +797,7 @@ function filterProducts(category, searchTerm = null) {
 
 function displayProductDetail(productId) {
     const product = getProductById(productId);
-    const detailContainer = domElements.productDetailContainer;
+    const detailContainer = domElements.productDetailPage;
     if (!product || !detailContainer) {
         console.error(`Product ${productId} not found or detail container missing.`);
         if(detailContainer) detailContainer.innerHTML = 'Error: Product details could not be loaded.';

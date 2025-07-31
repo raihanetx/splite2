@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 :root {
     --primary-color: #8F87F1;
@@ -71,7 +71,7 @@ html {
 }
 
 body {
-    font-family: 'League Spartan', sans-serif;
+    font-family: 'Cormorant Infant', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
