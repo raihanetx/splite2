@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - THINK PLUS BD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo-link">
+            <img src="https://i.postimg.cc/4NtztqPt/IMG-20250603-130207-removebg-preview-1.png" alt="THINK PLUS BD Logo" class="logo-image">
+        </a>
+
+        <div class="search-bar desktop-search-bar">
+            <input type="text" id="searchInput" placeholder="Search premium digital products..." aria-label="Search products">
+            <div class="search-separator"></div>
+            <button type="button" class="search-button" id="desktopSearchButton" aria-label="Search">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+
+        <div class="nav-icons">
+            <button type="button" class="nav-icon-button mobile-header-search-icon" id="mobileHeaderSearchIcon" title="Search" aria-label="Search">
+                <i class="fas fa-search" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="nav-icon-button" id="allProductsIcon" title="All Products" aria-label="All Products">
+                <i class="fas fa-store" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="nav-icon-button" id="ordersIcon" title="My Orders" aria-label="My Orders">
+                <i class="fas fa-box-open" aria-hidden="true"></i>
+                <div class="orders-notification" id="ordersNotification">!</div>
+            </button>
+            <button type="button" class="nav-icon-button cart-icon" id="cartIcon" title="View Cart" aria-label="View Cart">
+                <i class="fas fa-shopping-bag" aria-hidden="true"></i>
+                <div class="cart-count" id="cartCount">0</div>
+            </button>
+            <button type="button" class="nav-icon-button" id="menuIcon" title="Menu" aria-label="Menu">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="off-canvas-overlay" id="offCanvasOverlay"></div>
+    <div class="off-canvas-menu" id="offCanvasMenu">
+        <div class="off-canvas-header">
+            <h3>Menu</h3>
+            <button type="button" class="off-canvas-close" id="offCanvasClose" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="off-canvas-content">
+            <nav class="off-canvas-nav">
+                <a href="index.html" class="off-canvas-nav-item">
+                    <i class="fas fa-home"></i> <span>Home</span>
+                </a>
+                <a href="products.html" class="off-canvas-nav-item">
+                    <i class="fas fa-store"></i> <span>All Products</span>
+                </a>
+                <a href="products.html?category=course" class="off-canvas-nav-item">
+                    <i class="fas fa-graduation-cap"></i> <span>Courses</span>
+                </a>
+                <a href="products.html?category=subscription" class="off-canvas-nav-item">
+                    <i class="fas fa-key"></i> <span>Subscriptions</span>
+                </a>
+                <a href="products.html?category=software" class="off-canvas-nav-item">
+                    <i class="fas fa-laptop-code"></i> <span>Software</span>
+                </a>
+                <a href="products.html?category=ebook" class="off-canvas-nav-item">
+                    <i class="fas fa-book-open"></i> <span>Ebooks</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="mobile-search-container">
+        <div class="mobile-search-wrapper">
+            <div class="search-bar mobile-box-search-bar">
+                <input type="text" id="mobileSearchInput" placeholder="Search items..." aria-label="Search products">
+                <div class="search-separator"></div>
+                <button type="button" class="mobile-search-button" id="mobileBoxSearchButton" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="productDetailPage" class="page active product-detail-page">
+            <!-- Product details will be injected here by script.js -->
+        </section>
+    </main>
+
+    <footer class="footer" id="mainFooter">
+        <div class="container footer-content">
+            <div class="footer-brand-info">
+                <h2 class="footer-brand-title">Think Plus BD</h2>
+                <p class="footer-brand-description">Your one-stop shop for premium digital courses, subscriptions, software, and ebooks. Empowering your digital journey with quality products and exceptional service.</p>
+            </div>
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Digital Office, Dhaka, Bangladesh</p>
+                <p><i class="fas fa-phone" aria-hidden="true"></i> Phone: <a href="tel:+8801645431905" style="color:inherit;">+8801645-431905</a></p>
+                <p><i class="fas fa-envelope" aria-hidden="true"></i> Email: <a href="mailto:support@thinkplusbd.com" style="color:inherit;">support@thinkplusbd.com</a></p>
+            </div>
+            <div class="important-links">
+                <h3>Important Links</h3>
+                <a href="about.html"><i class="fas fa-info-circle" aria-hidden="true"></i> About Us</a>
+                <a href="terms.html"><i class="fas fa-file-contract" aria-hidden="true"></i> Terms & Conditions</a>
+                <a href="privacy.html"><i class="fas fa-user-shield" aria-hidden="true"></i> Privacy Policy</a>
+                <a href="refund.html"><i class="fas fa-undo-alt" aria-hidden="true"></i> Refund Policy</a>
+            </div>
+        </div>
+        <div class="copyright">
+            © <span id="currentYear"></span> THINK PLUS BD. All Rights Reserved.
+        </div>
+    </footer>
+
+    <div class="bottom-nav" id="bottomNav">
+        <a href="index.html" class="bottom-nav-item" data-page="home">
+            <i class="fas fa-home" aria-hidden="true"></i> <span>Home</span>
+        </a>
+        <a href="products.html" class="bottom-nav-item" data-page="products">
+            <i class="fas fa-store" aria-hidden="true"></i> <span>Products</span>
+        </a>
+        <a href="orders.html" class="bottom-nav-item" data-page="orders">
+            <span style="position:relative; display:inline-block;">
+                <i class="fas fa-box-open" aria-hidden="true"></i>
+                <div class="bottom-nav-orders-notification" id="bottomNavOrdersNotification">!</div>
+            </span>
+            <span>Orders</span>
+        </a>
+    </div>
+
+    <div class="fab-container" id="fabContainer">
+        <div class="fab-options">
+            <a href="tel:+8801645431905" class="fab-option" title="Call Us" aria-label="Call Us">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            </a>
+            <a href="https://wa.me/+8801645431905?text=Hello%20THINK%20PLUS%20BD,%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer" class="fab-option" title="WhatsApp Us" aria-label="WhatsApp Us">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            </a>
+            <a href="mailto:support@thinkplusbd.com" class="fab-option" title="Email Us" aria-label="Email Us">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="fab" id="contactFabMain" title="Contact Support" aria-label="Contact Support Options">
+            <i class="fas fa-headset" aria-hidden="true"></i>
+        </div>
+        <div class="fab-help-text">Need Help?</div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

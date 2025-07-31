@@ -1,31 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '482675157669768');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THINK PLUS BD - Premium Digital Products</title>
+    <title>Checkout - THINK PLUS BD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="on-home-page">
+<body>
     <header class="header">
         <a href="index.html" class="logo-link">
             <img src="https://i.postimg.cc/4NtztqPt/IMG-20250603-130207-removebg-preview-1.png" alt="THINK PLUS BD Logo" class="logo-image">
@@ -43,17 +25,17 @@
             <button type="button" class="nav-icon-button mobile-header-search-icon" id="mobileHeaderSearchIcon" title="Search" aria-label="Search">
                 <i class="fas fa-search" aria-hidden="true"></i>
             </button>
-            <a href="products.html" class="nav-icon-button" id="allProductsIcon" title="All Products" aria-label="All Products">
+            <button type="button" class="nav-icon-button" id="allProductsIcon" title="All Products" aria-label="All Products">
                 <i class="fas fa-store" aria-hidden="true"></i>
-            </a>
-            <a href="orders.html" class="nav-icon-button" id="ordersIcon" title="My Orders" aria-label="My Orders">
+            </button>
+            <button type="button" class="nav-icon-button" id="ordersIcon" title="My Orders" aria-label="My Orders">
                 <i class="fas fa-box-open" aria-hidden="true"></i>
                 <div class="orders-notification" id="ordersNotification">!</div>
-            </a>
-            <a href="cart.html" class="nav-icon-button cart-icon" id="cartIcon" title="View Cart" aria-label="View Cart">
+            </button>
+            <button type="button" class="nav-icon-button cart-icon" id="cartIcon" title="View Cart" aria-label="View Cart">
                 <i class="fas fa-shopping-bag" aria-hidden="true"></i>
                 <div class="cart-count" id="cartCount">0</div>
-            </a>
+            </button>
             <button type="button" class="nav-icon-button" id="menuIcon" title="Menu" aria-label="Menu">
                 <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
@@ -77,16 +59,16 @@
                     <i class="fas fa-store"></i> <span>All Products</span>
                 </a>
                 <a href="products.html?category=course" class="off-canvas-nav-item">
-                    <i class="fas fa-graduation-cap"></i> <span id="category-count-course">Courses</span>
+                    <i class="fas fa-graduation-cap"></i> <span>Courses</span>
                 </a>
                 <a href="products.html?category=subscription" class="off-canvas-nav-item">
-                    <i class="fas fa-key"></i> <span id="category-count-subscription">Subscriptions</span>
+                    <i class="fas fa-key"></i> <span>Subscriptions</span>
                 </a>
                 <a href="products.html?category=software" class="off-canvas-nav-item">
-                    <i class="fas fa-laptop-code"></i> <span id="category-count-software">Software</span>
+                    <i class="fas fa-laptop-code"></i> <span>Software</span>
                 </a>
                 <a href="products.html?category=ebook" class="off-canvas-nav-item">
-                    <i class="fas fa-book-open"></i> <span id="category-count-ebook">Ebooks</span>
+                    <i class="fas fa-book-open"></i> <span>Ebooks</span>
                 </a>
             </nav>
         </div>
@@ -105,99 +87,75 @@
     </div>
 
     <main>
-        <section id="homePage" class="page active">
-            <section class="banner">
-                <div class="banner-image-container">
-                    <div class="skeleton"></div>
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="product_images/phnbanner.png">
-                        <source media="(min-width: 769px)" srcset="product_images/desktopbanner.png">
-                        <img src="product_images/desktop_banner.png" alt="Premium Digital Products and Services" class="image-fade-in" />
-                    </picture>
-                    <span class="image-placeholder-text" style="display:none;">Premium Digital Products and Services</span>
-                </div>
-            </section>
+        <section id="checkoutPage" class="page active checkout-page">
+            <div class="checkout-container">
+                <h1 class="page-title">Complete your order<br><small>অর্ডার করতে নিচের ফিল্ডগুলো পূরণ করুন!</small></h1>
+                <form id="checkoutForm">
+                    <div class="form-section order-summary-section">
+                        <h2 class="section-title">Order Summary</h2>
+                        <div class="order-summary">
+                            <div id="orderItemsCheckout" class="summary-items">
+                                <p>Your cart is empty. Please add items to proceed.</p>
+                            </div>
+                            <div class="summary-total">
+                                <span class="summary-total-label">Total Amount:</span>
+                                <span class="summary-total-value" id="orderTotalCheckout">৳0.00</span>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="container">
-                 <h2 class="category-section-title">Product Categories</h2>
+                    <div class="form-section payment-method-section">
+                        <h2 class="section-title">Payment Method</h2>
+                        <div class="custom-select-wrapper payment-gateway-select">
+                            <div class="custom-select-trigger" tabindex="0">
+                                <span id="selected-payment-method-text">Select your payment gateway</span>
+                                <svg class="custom-select-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M7 10l5 5 5-5H7z" fill="currentColor"/></svg>
+                            </div>
+                            <div class="custom-options">
+                                <div class="custom-option" data-value="bkash" data-instruction-type="bkash">bKash</div>
+                                <div class="custom-option" data-value="nagad" data-instruction-type="nagad">Nagad</div>
+                                <div class="custom-option" data-value="rocket" data-instruction-type="rocket">Rocket</div>
+                                <div class="custom-option" data-value="upay" data-instruction-type="upay">Upay</div>
+                                <input type="radio" name="paymentMethod" id="bkash_radio" value="bkash" class="visually-hidden">
+                                <input type="radio" name="paymentMethod" id="nagad_radio" value="nagad" class="visually-hidden">
+                                <input type="radio" name="paymentMethod" id="rocket_radio" value="rocket" class="visually-hidden">
+                                <input type="radio" name="paymentMethod" id="upay_radio" value="upay" class="visually-hidden">
+                            </div>
+                        </div>
+                        <div id="payment-details-area" style="display:none;">
+                            <p class="recipient-number" id="recipient-number-display">
+                                <span id="payment-number-text">01757204719</span>
+                                <button type="button" id="copy-payment-number" class="copy-number-button" aria-label="Copy payment number">
+                                    <i class="far fa-copy"></i>
+                                </button>
+                            </p>
+                            <div id="payment-instructions"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-section user-info-section">
+                        <h2 class="section-title">Your Information & Payment Details</h2>
+                        <div class="form-group">
+                            <label for="name">Your Name:</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your valid email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="number">Phone Number (Payment Number):</label>
+                            <input type="tel" id="number" name="number" placeholder="11-digit mobile number used for payment" required pattern="01[3-9]\d{8}">
+                        </div>
+                        <div class="form-group">
+                            <label for="transactionId">Transaction ID (TrxID):</label>
+                            <input type="text" id="transactionId" name="transactionId" placeholder="Transaction ID received after payment" required minlength="5">
+                            <small>Enter the correct TrxID to confirm your payment.</small>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Confirm Payment</button>
+                </form>
             </div>
-            <section class="categories container">
-                <a href="products.html?category=course" class="category">
-                    <div class="category-icon-wrapper"><i class="fas fa-graduation-cap category-icon-fa" aria-hidden="true"></i></div>
-                    <p class="category-name">Course</p>
-                </a>
-                <a href="products.html?category=subscription" class="category">
-                    <div class="category-icon-wrapper"><i class="fas fa-key category-icon-fa" aria-hidden="true"></i></div>
-                    <p class="category-name">Subscription</p>
-                </a>
-                <a href="products.html?category=software" class="category">
-                    <div class="category-icon-wrapper"><i class="fas fa-laptop-code category-icon-fa" aria-hidden="true"></i></div>
-                    <p class="category-name">Software</p>
-                </a>
-                <a href="products.html?category=ebook" class="category">
-                    <div class="category-icon-wrapper"><i class="fas fa-book-open category-icon-fa" aria-hidden="true"></i></div>
-                    <p class="category-name">Ebook</p>
-                </a>
-            </section>
-
-            <section class="product-listings container">
-                <div class="featured-section-header">
-                    <h2 class="category-title">Courses</h2>
-                    <a class="view-all" href="products.html?category=course">View All <i class="fas fa-angle-double-right" style="font-size: 0.8em;"></i></a>
-                </div>
-                <div class="homepage-products-grid" id="featuredCoursesGrid">
-                    <!-- Skeletons for loading state -->
-                </div>
-
-                <div class="featured-section-header">
-                    <h2 class="category-title">Subscriptions</h2>
-                    <a class="view-all" href="products.html?category=subscription">View All <i class="fas fa-angle-double-right" style="font-size: 0.8em;"></i></a>
-                </div>
-                <div class="homepage-products-grid" id="popularSubscriptionsGrid">
-                     <!-- Skeletons for loading state -->
-                </div>
-
-                <div class="featured-section-header">
-                    <h2 class="category-title">Software</h2>
-                    <a class="view-all" href="products.html?category=software">View All <i class="fas fa-angle-double-right" style="font-size: 0.8em;"></i></a>
-                </div>
-                <div class="homepage-products-grid" id="topSoftwareGrid">
-                    <!-- Skeletons for loading state -->
-                </div>
-                <div class="featured-section-header">
-                    <h2 class="category-title">Ebooks</h2>
-                    <a class="view-all" href="products.html?category=ebook">View All <i class="fas fa-angle-double-right" style="font-size: 0.8em;"></i></a>
-                </div>
-                <div class="homepage-products-grid ebooks-grid" id="latestEbooksGrid">
-                    <!-- Skeletons for loading state -->
-                </div>
-            </section>
-
-            <section class="why-choose-us">
-                <h2 class="section-title">Why Choose Us</h2>
-                <div class="choose-us-grid container">
-                    <div class="benefit">
-                        <i class="fas fa-medal benefit-icon-fa" aria-hidden="true"></i>
-                        <h3>Premium Quality</h3>
-                        <p>Access good-quality digital products </p>
-                    </div>
-                    <div class="benefit">
-                        <i class="fas fa-headset benefit-icon-fa" aria-hidden="true"></i>
-                        <h3>Dedicated Support</h3>
-                        <p>Think plus bd is available for halp and queries.</p>
-                    </div>
-                    <div class="benefit">
-                        <i class="fas fa-tags benefit-icon-fa" aria-hidden="true"></i>
-                        <h3>Affordable Pricing</h3>
-                        <p>Get good-tier products at prices that fit with budget.</p>
-                    </div>
-                    <div class="benefit">
-                        <i class="fas fa-shield-alt benefit-icon-fa" aria-hidden="true"></i>
-                        <h3>Secure Payments</h3>
-                        <p>Multiple secure payment options, including Nagad and bKash.</p>
-                    </div>
-                </div>
-            </section>
         </section>
     </main>
 
@@ -227,7 +185,7 @@
     </footer>
 
     <div class="bottom-nav" id="bottomNav">
-        <a href="index.html" class="bottom-nav-item active" data-page="home">
+        <a href="index.html" class="bottom-nav-item" data-page="home">
             <i class="fas fa-home" aria-hidden="true"></i> <span>Home</span>
         </a>
         <a href="products.html" class="bottom-nav-item" data-page="products">
