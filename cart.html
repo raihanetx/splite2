@@ -1,31 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '482675157669768');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THINK PLUS BD - Premium Digital Products</title>
+    <title>Your Cart - THINK PLUS BD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="on-home-page">
+<body>
     <header class="header">
         <a href="index.html" class="logo-link">
             <img src="https://i.postimg.cc/4NtztqPt/IMG-20250603-130207-removebg-preview-1.png" alt="THINK PLUS BD Logo" class="logo-image">
@@ -43,17 +25,17 @@
             <button type="button" class="nav-icon-button mobile-header-search-icon" id="mobileHeaderSearchIcon" title="Search" aria-label="Search">
                 <i class="fas fa-search" aria-hidden="true"></i>
             </button>
-            <a href="products.html" class="nav-icon-button" id="allProductsIcon" title="All Products" aria-label="All Products">
+            <button type="button" class="nav-icon-button" id="allProductsIcon" title="All Products" aria-label="All Products">
                 <i class="fas fa-store" aria-hidden="true"></i>
-            </a>
-            <a href="orders.html" class="nav-icon-button" id="ordersIcon" title="My Orders" aria-label="My Orders">
+            </button>
+            <button type="button" class="nav-icon-button" id="ordersIcon" title="My Orders" aria-label="My Orders">
                 <i class="fas fa-box-open" aria-hidden="true"></i>
                 <div class="orders-notification" id="ordersNotification">!</div>
-            </a>
-            <a href="cart.html" class="nav-icon-button cart-icon" id="cartIcon" title="View Cart" aria-label="View Cart">
+            </button>
+            <button type="button" class="nav-icon-button cart-icon" id="cartIcon" title="View Cart" aria-label="View Cart">
                 <i class="fas fa-shopping-bag" aria-hidden="true"></i>
                 <div class="cart-count" id="cartCount">0</div>
-            </a>
+            </button>
             <button type="button" class="nav-icon-button" id="menuIcon" title="Menu" aria-label="Menu">
                 <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
@@ -77,16 +59,16 @@
                     <i class="fas fa-store"></i> <span>All Products</span>
                 </a>
                 <a href="products.html?category=course" class="off-canvas-nav-item">
-                    <i class="fas fa-graduation-cap"></i> <span id="category-count-course">Courses</span>
+                    <i class="fas fa-graduation-cap"></i> <span>Courses</span>
                 </a>
                 <a href="products.html?category=subscription" class="off-canvas-nav-item">
-                    <i class="fas fa-key"></i> <span id="category-count-subscription">Subscriptions</span>
+                    <i class="fas fa-key"></i> <span>Subscriptions</span>
                 </a>
                 <a href="products.html?category=software" class="off-canvas-nav-item">
-                    <i class="fas fa-laptop-code"></i> <span id="category-count-software">Software</span>
+                    <i class="fas fa-laptop-code"></i> <span>Software</span>
                 </a>
                 <a href="products.html?category=ebook" class="off-canvas-nav-item">
-                    <i class="fas fa-book-open"></i> <span id="category-count-ebook">Ebooks</span>
+                    <i class="fas fa-book-open"></i> <span>Ebooks</span>
                 </a>
             </nav>
         </div>
@@ -105,99 +87,19 @@
     </div>
 
     <main>
-        <section id="homePage" class="page active">
-            <section class="banner">
-                <div class="banner-image-container">
-                    <div class="skeleton"></div>
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="product_images/phnbanner.png">
-                        <source media="(min-width: 769px)" srcset="product_images/desktopbanner.png">
-                        <img src="product_images/desktop_banner.png" alt="Premium Digital Products and Services" class="image-fade-in" />
-                    </picture>
-                    <span class="image-placeholder-text" style="display:none;">Premium Digital Products and Services</span>
+        <section id="cartPage" class="page active cart-page">
+            <div class="cart-page-container">
+                <div id="cartPageContent">
                 </div>
-            </section>
-
-            <div class="container">
-                 <h2 class="category-section-title">Product Categories</h2>
+                <div id="emptyCartPage" class="empty-cart-page" style="display:none;">
+                    <i class="fas fa-shopping-cart empty-cart-icon"></i>
+                    <h3 class="empty-cart-message">Your cart is empty</h3>
+                    <p class="empty-cart-description">Looks like you haven't added any items to your cart yet. Start browsing our premium digital products and find something amazing!</p>
+                    <button class="continue-shopping" onclick="navigateTo('products', 'all')">
+                        <i class="fas fa-store"></i> Start Shopping
+                    </button>
+                </div>
             </div>
-            <section class="categories container">
-                <a href="products.html?category=course" class="category">
-                    <div class="category-icon-wrapper"><i class="fas fa-graduation-cap category-icon-fa" aria-hidden="true"></i></div>
-                    <p class="category-name">Course</p>
-                </a>
-                <a href="products.html?category=subscription" class="category">
-                    <div class="category-icon-wrapper"><i class="fas fa-key category-icon-fa" aria-hidden="true"></i></div>
-                    <p class="category-name">Subscription</p>
-                </a>
-                <a href="products.html?category=software" class="category">
-                    <div class="category-icon-wrapper"><i class="fas fa-laptop-code category-icon-fa" aria-hidden="true"></i></div>
-                    <p class="category-name">Software</p>
-                </a>
-                <a href="products.html?category=ebook" class="category">
-                    <div class="category-icon-wrapper"><i class="fas fa-book-open category-icon-fa" aria-hidden="true"></i></div>
-                    <p class="category-name">Ebook</p>
-                </a>
-            </section>
-
-            <section class="product-listings container">
-                <div class="featured-section-header">
-                    <h2 class="category-title">Courses</h2>
-                    <a class="view-all" href="products.html?category=course">View All <i class="fas fa-angle-double-right" style="font-size: 0.8em;"></i></a>
-                </div>
-                <div class="homepage-products-grid" id="featuredCoursesGrid">
-                    <!-- Skeletons for loading state -->
-                </div>
-
-                <div class="featured-section-header">
-                    <h2 class="category-title">Subscriptions</h2>
-                    <a class="view-all" href="products.html?category=subscription">View All <i class="fas fa-angle-double-right" style="font-size: 0.8em;"></i></a>
-                </div>
-                <div class="homepage-products-grid" id="popularSubscriptionsGrid">
-                     <!-- Skeletons for loading state -->
-                </div>
-
-                <div class="featured-section-header">
-                    <h2 class="category-title">Software</h2>
-                    <a class="view-all" href="products.html?category=software">View All <i class="fas fa-angle-double-right" style="font-size: 0.8em;"></i></a>
-                </div>
-                <div class="homepage-products-grid" id="topSoftwareGrid">
-                    <!-- Skeletons for loading state -->
-                </div>
-                <div class="featured-section-header">
-                    <h2 class="category-title">Ebooks</h2>
-                    <a class="view-all" href="products.html?category=ebook">View All <i class="fas fa-angle-double-right" style="font-size: 0.8em;"></i></a>
-                </div>
-                <div class="homepage-products-grid ebooks-grid" id="latestEbooksGrid">
-                    <!-- Skeletons for loading state -->
-                </div>
-            </section>
-
-            <section class="why-choose-us">
-                <h2 class="section-title">Why Choose Us</h2>
-                <div class="choose-us-grid container">
-                    <div class="benefit">
-                        <i class="fas fa-medal benefit-icon-fa" aria-hidden="true"></i>
-                        <h3>Premium Quality</h3>
-                        <p>Access good-quality digital products </p>
-                    </div>
-                    <div class="benefit">
-                        <i class="fas fa-headset benefit-icon-fa" aria-hidden="true"></i>
-                        <h3>Dedicated Support</h3>
-                        <p>Think plus bd is available for halp and queries.</p>
-                    </div>
-                    <div class="benefit">
-                        <i class="fas fa-tags benefit-icon-fa" aria-hidden="true"></i>
-                        <h3>Affordable Pricing</h3>
-                        <p>Get good-tier products at prices that fit with budget.</p>
-                    </div>
-                    <div class="benefit">
-                        <i class="fas fa-shield-alt benefit-icon-fa" aria-hidden="true"></i>
-                        <h3>Secure Payments</h3>
-                        <p>Multiple secure payment options, including Nagad and bKash.</p>
-                    </div>
-                </div>
-            </section>
         </section>
     </main>
 
@@ -227,7 +129,7 @@
     </footer>
 
     <div class="bottom-nav" id="bottomNav">
-        <a href="index.html" class="bottom-nav-item active" data-page="home">
+        <a href="index.html" class="bottom-nav-item" data-page="home">
             <i class="fas fa-home" aria-hidden="true"></i> <span>Home</span>
         </a>
         <a href="products.html" class="bottom-nav-item" data-page="products">
