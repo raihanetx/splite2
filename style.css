@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700&display=swap');
+
 :root {
     --primary-color: #8F87F1;
     --secondary-color: #FFFFFF;
@@ -69,7 +71,7 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'League Spartan', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
