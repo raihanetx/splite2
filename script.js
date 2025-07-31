@@ -795,86 +795,86 @@ function filterProducts(category, searchTerm = null) {
     }
 }
 
-function displayProductDetail(productId) {
+async function displayCustomProductDetail(productId) {
     const product = getProductById(productId);
     const detailContainer = domElements.productDetailPage;
     if (!product || !detailContainer) {
         console.error(`Product ${productId} not found or detail container missing.`);
-        if(detailContainer) detailContainer.innerHTML = 'Error: Product details could not be loaded.';
+        if (detailContainer) detailContainer.innerHTML = 'Error: Product details could not be loaded.';
         return;
     }
 
-    let currentPrice = parseFloat(product.price);
-    let durationSelectorHTML = '';
-    if (product.category === 'subscription' && Array.isArray(product.durations) && product.durations.length > 0) {
-        currentPrice = parseFloat(product.durations[0].price);
-        durationSelectorHTML = `
-            <div class="duration-selector" style="margin-bottom:0.75rem;display:block;">
-                <label for="duration-detail-${product.id}" style="font-weight:600;margin-bottom:0.5rem;display:block;">Select Duration:</label>
-                <select id="duration-detail-${product.id}" data-product-id="${product.id}" style="width:100%;padding:0.7rem;border:1px solid #ccc;border-radius:6px;font-size:1rem;">
-                    ${product.durations.map(d => `<option value="${d.price}">${d.label} - ৳${parseFloat(d.price).toFixed(2)}</option>`).join('')}
-                </select>
-            </div>`;
-    }
-
-    detailContainer.innerHTML = `
-        <div class="product-detail-images">
-            <div class="product-detail-main-image-container">
-                <div class="skeleton"></div>
-                <span class="image-placeholder-text" style="display: none;">Image for ${product.name}</span>
-                ${product.image ? `<img src="${product.image}" alt="${product.name}" class="image-fade-in">` : ''}
-            </div>
-        </div>
-        <div class="product-detail-info">
-            <h2 class="product-detail-title">${product.name || 'N/A'}</h2>
-            <p class="product-detail-description">${product.longDescription || product.description || 'An exceptional digital product.'}</p>
-            <div class="product-detail-price">৳${currentPrice.toFixed(2)}</div>
-            ${durationSelectorHTML}
-            <div class="product-detail-actions">
-                <button class="buy-now-detail" data-id="${product.id}"><i class="fas fa-bolt"></i> Buy Now</button>
-                <button class="add-to-cart-detail" data-id="${product.id}"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-            </div>
-        </div>
-        ${renderRelatedProductsSection(product.id, product.category)}
-    `;
-
-    const img = detailContainer.querySelector('img.image-fade-in');
-    if (img) setupSingleImageLoading(img);
-    else {
-        const skeleton = detailContainer.querySelector('.skeleton');
-        if(skeleton) skeleton.style.display = 'none';
-        const placeholder = detailContainer.querySelector('.image-placeholder-text');
-        if(placeholder) placeholder.style.display = 'block';
-    }
-    setupRelatedProductImages();
-
-    // Event listeners
-    const durationSelector = detailContainer.querySelector(`#duration-detail-${product.id}`);
-    if (durationSelector) {
-        durationSelector.addEventListener('change', (e) => {
-            const newPrice = parseFloat(e.target.value);
-            const priceElement = detailContainer.querySelector('.product-detail-price');
-            if (priceElement) priceElement.textContent = `৳${newPrice.toFixed(2)}`;
-        });
-    }
-    detailContainer.querySelector('.buy-now-detail').addEventListener('click', e => {
-        const productToBuy = getProductById(productId);
-        if (productToBuy) {
-            const productCopy = { ...productToBuy };
-            const durationSel = document.getElementById(`duration-detail-${productId}`);
-            if (durationSel && durationSel.value) {
-                const selectedOption = durationSel.options[durationSel.selectedIndex];
-                productCopy.price = parseFloat(selectedOption.value);
-                productCopy.selectedDurationLabel = selectedOption.text.split(' - ')[0];
-            }
-            cart = [{ ...productCopy, quantity: 1 }];
-            updateCart();
-            navigateTo('checkout');
+    try {
+        const response = await fetch('product-details-page.html');
+        if (!response.ok) {
+            throw new Error(`Failed to fetch product-details-page.html: ${response.statusText}`);
         }
-    });
-    detailContainer.querySelector('.add-to-cart-detail').addEventListener('click', e => {
-        addToCart(getProductById(productId));
-    });
+        let html = await response.text();
+
+        // Replace placeholders
+        html = html.replace(/\${product.name}/g, product.name || 'N/A');
+        html = html.replace(/\${product.description}/g, product.description || 'No description available.');
+        html = html.replace(/\${product.longDescription}/g, product.longDescription || product.description || 'An exceptional digital product.');
+        html = html.replace(/\${product.image}/g, product.image ? `<img src="${product.image}" alt="${product.name}" class="image-fade-in">` : '<span class="image-placeholder-text">Image not available</span>');
+
+        let currentPrice = parseFloat(product.price);
+        let durationSelectorHTML = '';
+        if (product.category === 'subscription' && Array.isArray(product.durations) && product.durations.length > 0) {
+            currentPrice = parseFloat(product.durations[0].price);
+            durationSelectorHTML = `
+                <label class="duration-label" for="duration">Select Duration:</label>
+                <select id="duration">
+                    ${product.durations.map(d => `<option value="${d.price}" data-price="${d.price}">${d.label} - ৳${parseFloat(d.price).toFixed(2)}</option>`).join('')}
+                </select>`;
+        }
+        html = html.replace(/\${durationSelectorHTML}/g, durationSelectorHTML);
+        html = html.replace(/\${product.price}/g, `৳${currentPrice.toFixed(2)}`);
+
+        // For related products, we need to call the function and replace the placeholder
+        const relatedProductsHTML = renderRelatedProductsSection(product.id, product.category);
+        html = html.replace(/\${renderRelatedProductsSection\(product.id, product.category\)}/g, relatedProductsHTML);
+
+        detailContainer.innerHTML = html;
+
+        // Re-run setup for dynamic content
+        setupImageLoading();
+        setupRelatedProductImages();
+
+        // Attach event listeners for buy and add to cart buttons
+        const buyButton = detailContainer.querySelector('.btn-buy');
+        if (buyButton) {
+            buyButton.addEventListener('click', () => {
+                const productToBuy = getProductById(productId);
+                if (productToBuy) {
+                    const productCopy = { ...productToBuy };
+                    const durationSel = document.getElementById(`duration`);
+                    if (durationSel && durationSel.value) {
+                        const selectedOption = durationSel.options[durationSel.selectedIndex];
+                        productCopy.price = parseFloat(selectedOption.value);
+                        productCopy.selectedDurationLabel = selectedOption.text.split(' - ')[0];
+                    }
+                    cart = [{ ...productCopy, quantity: 1 }];
+                    updateCart();
+                    navigateTo('checkout');
+                }
+            });
+        }
+
+        const addToCartButton = detailContainer.querySelector('.btn-cart');
+        if (addToCartButton) {
+            addToCartButton.addEventListener('click', () => {
+                addToCart(getProductById(productId));
+            });
+        }
+
+    } catch (error) {
+        console.error('Error loading or processing custom product detail page:', error);
+        detailContainer.innerHTML = 'Error: Could not load product details template.';
+    }
+}
+
+function displayProductDetail(productId) {
+    displayCustomProductDetail(productId);
 }
 
 function getRelatedProducts(currentProductId, category, limit = 4) {

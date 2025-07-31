@@ -1,0 +1,568 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-image {
+    width: 100%;
+    position: relative;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #6c757d;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.product-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #212529;
+}
+
+.product-description {
+    color: #6c757d;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.product-price {
+    font-size: 28px;
+    font-weight: 700;
+    color: #8F87F1;
+    margin-bottom: 15px;
+}
+
+.duration-selector {
+    margin-bottom: 20px;
+}
+
+.duration-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 16px;
+}
+
+.buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 14px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    flex: 1;
+}
+
+.btn-buy {
+    background-color: #8F87F1;
+    color: white;
+}
+
+.btn-cart {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* Remove blue focus outline */
+.btn:focus,
+.submit-btn:focus,
+.tab:focus,
+.see-more:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Accessibility focus style */
+.btn:focus-visible,
+.submit-btn:focus-visible,
+.tab:focus-visible,
+.see-more:focus-visible {
+    outline: 2px solid #8F87F1;
+    outline-offset: 2px;
+}
+
+/* Description and Reviews Section */
+.section {
+    margin: 40px auto;
+    max-width: 800px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #212529;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.description-content h3,
+.reviews-content h3 {
+    margin-bottom: 15px;
+    color: #212529;
+}
+
+.description-content p {
+    margin-bottom: 15px;
+    color: #6c757d;
+    line-height: 1.8;
+}
+
+.description-content ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.description-content li {
+    margin-bottom: 8px;
+    padding-left: 10px;
+}
+
+.feature-list {
+    columns: 2;
+    column-gap: 30px;
+}
+
+@media (max-width: 767px) {
+    .feature-list {
+        columns: 1;
+    }
+}
+
+.review {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.review:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.review-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #8F87F1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    margin-right: 12px;
+}
+
+.review-author-info {
+    flex: 1;
+}
+
+.review-author {
+    font-weight: 600;
+    color: #212529;
+}
+
+.review-date {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.review-stars {
+    color: #ffc107;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.review-text {
+    display: inline;
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+.overall-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.rating-value {
+    font-size: 24px;
+    font-weight: 700;
+    margin-right: 15px;
+    color: #8F87F1;
+}
+
+.rating-stars {
+    color: #ffc107;
+    font-size: 20px;
+}
+
+.rating-count {
+    margin-left: 10px;
+    color: #6c757d;
+}
+
+/* Truncated content styles */
+.truncated-content {
+    position: relative;
+    display: inline;
+}
+
+.see-more-container {
+    display: inline;
+}
+
+.see-more-dots {
+    color: #6c757d;
+}
+
+.see-more {
+    display: inline;
+    color: #8F87F1;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 2px;
+}
+
+.see-more:hover {
+    text-decoration: underline;
+}
+
+/* Review Form */
+.review-form {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    margin-top: 30px;
+    box-shadow: none;
+}
+
+.form-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #212529;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+/* Applied consistent focus style to all form inputs/selects/textareas */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #8F87F1;
+    box-shadow: 0 0 0 3px rgba(143, 135, 241, 0.1);
+}
+
+.form-group textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+/* Fixed Star Rating */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 24px;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star-rating input:checked + label,
+.star-rating input:checked + label ~ label {
+    color: #ffc107;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #ffc107;
+}
+
+.submit-btn {
+    background-color: #8F87F1;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #7a71e0;
+    transform: translateY(-2px);
+}
+
+/* Tabs for Description/Reviews */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 15px 25px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #6c757d;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.tab.active {
+    color: #8F87F1;
+    border-bottom: 3px solid #8F87F1;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Related Products Section */
+.related-products {
+    margin: 50px 0;
+}
+
+.related-products .section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.product-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Ensures the link takes up the whole card space */
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* Make card fill the link wrapper */
+}
+
+.product-card-link:hover .product-card {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.product-card-image {
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+}
+
+.product-card-info {
+    padding: 12px;
+}
+
+.product-card-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #212529;
+    height: 36px;
+    overflow: hidden;
+}
+
+.product-card-description {
+    font-size: 13px;
+    color: #6c757d;
+    margin-bottom: 8px;
+    height: 32px;
+    overflow: hidden;
+}
+
+.product-card-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #8F87F1;
+    margin-bottom: 10px;
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+    .product-details-container {
+        display: flex;
+        gap: 30px;
+        margin: 0 auto;
+        max-width: 1000px;
+    }
+
+    .product-image {
+        width: 50%;
+        padding-top: 28.125%; /* Maintains 16:9 aspect ratio for 50% width */
+        margin-bottom: 0;
+    }
+
+    .product-info {
+        width: 50%;
+    }
+
+    .product-name {
+        font-size: 32px;
+    }
+
+    .product-price {
+        font-size: 36px;
+    }
+
+    .duration-selector {
+        width: 100%;
+    }
+
+    .buttons {
+        flex-direction: row;
+    }
+
+    .tabs {
+        padding-left: 0;
+    }
+
+    .tab {
+        padding: 20px 30px;
+    }
+
+    .description-content {
+        padding: 0 20px;
+    }
+
+    .reviews-content {
+        padding: 0 20px;
+    }
+
+    /* Desktop - 3 products per row */
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .product-card-title {
+        font-size: 16px;
+        height: 38px;
+    }
+
+    .product-card-description {
+        font-size: 14px;
+        height: 36px;
+    }
+
+    .product-card-price {
+        font-size: 18px;
+    }
+
+    /* Show all products on desktop */
+    .product-card.desktop-only {
+        display: block;
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+    .product-image {
+        padding-top: 28.125%; /* Still maintains 16:9 aspect ratio */
+    }
+}
